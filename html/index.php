@@ -26,7 +26,7 @@
                 <article class="row justify-content-center">
                     <div class="col-12 col-sm-6 my-1">
                         <label for="heroName">Hero Name: </label>
-                       <input type="text" name="heroName" id="heroName" placeholder="Enter Hero Name..." class="w-100" pattern="[A-Za-z\-\ ]">
+                       <input type="text" name="heroName" id="heroName" placeholder="Enter Hero Name..." class="w-100">
                     </div>
                     <div class="col-12 col-sm-6 my-1">
                         <label for="heroGroups">Hero Groups: </label>
@@ -71,11 +71,11 @@
                                 <label for="heroUni">Select Hero Universe: </label>
                             </div>
                         <section class="btn-group-vertical ml-2 row w-75" role="group" aria-label="Hero Universe Selection">
-                            <input type="radio" class="btn-check" name="heroUni" id="heroUniMar" value="marvel">
+                            <input type="radio" class="btn-check" name="heroUni" id="heroUniMar" value="ma">
                             <label class="btn btn-outline-primary" for="heroUniMar">Marvel</label>
                             <input type="radio" class="btn-check" name="heroUni" id="heroUniDc" value="dc">
                             <label class="btn btn-outline-info" for="heroUniDc">DC</label>
-                            <input type="radio" class="btn-check" name="heroUni" id="heroUniOther" value="other">
+                            <input type="radio" class="btn-check" name="heroUni" id="heroUniOther" value="ot">
                             <label class="btn btn-outline-secondary" for="heroUniOther">Other</label>
                         </section>
                     </div>
@@ -129,6 +129,7 @@
             echo("db selected");
             createTables($con);
             addingStats();
+        
         }
         $con->close();
         }
@@ -153,18 +154,14 @@
             heroWeak VARCHAR(300) DEFAULT 'NONE',
             heroEn VARCHAR(300) DEFAULT 'NONE',
             heroBio VARCHAR(3000) NOT NULL,
-            uniID CHAR(3),
-            imgID CHAR(3),
-            groupID CHAR(3),
+            uniID CHAR(2),
+            imgLoc VARCHAR(150) DEFAULT '1superhero-img.jpg',
+            teamID CHAR(3)
         )";
-        $sqlCreateTableGroup = "CREATE TABLE IF NOT EXISTS groups (
-            groupID CHAR(3) PRIMARY KEY,
-            groupName VARCHAR(25) DEFAULT 'Unknown',
+        $sqlCreateTableTeam = "CREATE TABLE IF NOT EXISTS teams (
+            teamID CHAR(3) PRIMARY KEY,
+            teamName VARCHAR(25) DEFAULT 'Unknown',
             imgID CHAR(3)
-        )";
-        $sqlCreateTableImg = "CREATE TABLE IF NOT EXISTS img (
-            imgID CHAR(3) PRIMARY KEY,
-            imgLoc VARCHAR(150) DEFAULT '1superhero-img.jpg'
         )";
         $sqlCreateTableUni = "CREATE TABLE IF NOT EXISTS uni (
             uniID CHAR(3),
@@ -174,14 +171,41 @@
         if($conn->query($sqlCreateTableHero) == FALSE) {
             echo("Creating Hero table FAILED" . $conn->error);
         }
-        if($conn->query($sqlCreateTableGroup) == FALSE) {
-            echo("Creating Group table FAILED" . $conn->error);
-        }
-        if($conn->query($sqlCreateTableImg) == FALSE) {
-            echo("Creating Image table FAILED" . $conn->error);
+        if($conn->query($sqlCreateTableTeam) == FALSE) {
+            echo("Creating Team table FAILED" . $conn->error);
         }
         if($conn->query($sqlCreateTableUni) == FALSE) {
             echo("Creating Universe table FAILED" . $conn->error);
+        }
+
+        // Add the universes to the uni table
+        $sqlUni1 = "INSERT INTO uni VALUES ('dc', 'DC Universe')";
+        $sqlUni2 = "INSERT INTO uni VALUES ('ma', 'Marvel Universe')";
+        $sqlUni3 = "INSERT INTO uni VALUES ('ot', 'Other')";
+
+        if($conn->query($sqlUni1) == FALSE) {
+            echo("Added to table" . $conn->error);
+        }
+        if($conn->query($sqlUni2) == FALSE) {
+            echo("Added to table" . $conn->error);
+        }
+        if($conn->query($sqlUni3) == FALSE) {
+            echo("Added to table" . $conn->error);
+        }
+
+        // Add the main team pics to the image table
+        $sqlImg1 = "INSERT INTO img (imgLoc) VALUES ('avengers-img.jpg')";
+        $sqlImg2 = "INSERT INTO img (imgLoc) VALUES ('dc-img.jpg')";
+        $sqlImg3 = "INSERT INTO img (imgLoc) VALUES ('other-img.jpg')";
+        
+        if($conn->query($sqlImg1) == FALSE) {
+            echo("Added to table" . $conn->error);
+        }
+        if($conn->query($sqlImg2) == FALSE) {
+            echo("Added to table" . $conn->error);
+        }
+        if($conn->query($sqlImg3) == FALSE) {
+            echo("Added to table" . $conn->error);
         }
     }
     function addingStats() {
