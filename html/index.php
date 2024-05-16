@@ -128,7 +128,7 @@
         else {
             echo("db selected");
             createTables($con);
-            addingStats();
+            addingStats($con);
         
         }
         $con->close();
@@ -144,11 +144,12 @@
 
         return $input;
     }
+
     function createTables($conn) {
         // Create tables for the hero stats, images, universes, and groups
         $sqlCreateTableHero = "CREATE TABLE IF NOT EXISTS hero (
-            heroID CHAR(3) PRIMARY KEY,
-            heroName VARCHAR(50) NOT NULL,
+            heroID INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            heroName VARCHAR(50) UNIQUE NOT NULL,
             heroPwr VARCHAR(300) DEFAULT 'NONE',
             heroAb VARCHAR(300) DEFAULT 'NONE',
             heroWeak VARCHAR(300) DEFAULT 'NONE',
@@ -156,79 +157,90 @@
             heroBio VARCHAR(3000) NOT NULL,
             uniID CHAR(2),
             imgLoc VARCHAR(150) DEFAULT '1superhero-img.jpg',
-            teamID CHAR(3)
-        )";
-        $sqlCreateTableTeam = "CREATE TABLE IF NOT EXISTS teams (
-            teamID CHAR(3) PRIMARY KEY,
-            teamName VARCHAR(25) DEFAULT 'Unknown',
-            imgID CHAR(3)
+            logoLoc VARCHAR(150)
         )";
         $sqlCreateTableUni = "CREATE TABLE IF NOT EXISTS uni (
-            uniID CHAR(3),
-            uniName VARCHAR(25) DEFAULT 'Other'
+            uniID CHAR(2) PRIMARY KEY,
+            uniName VARCHAR(25) DEFAULT 'Other',
+            teamName VARCHAR(25)
+        )";
+        $sqlCreateTableImg = "CREATE TABLE IF NOT EXISTS img (
+            imgID INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            imgLoc VARCHAR(150) UNIQUE,
+            imgDesc VARCHAR(5),
+            uniID CHAR(2)
         )";
 
         if($conn->query($sqlCreateTableHero) == FALSE) {
             echo("Creating Hero table FAILED" . $conn->error);
         }
-        if($conn->query($sqlCreateTableTeam) == FALSE) {
-            echo("Creating Team table FAILED" . $conn->error);
+
+        if($conn->query($sqlCreateTableImg) == FALSE) {
+            echo("Creating Image table FAILED" . $conn->error);
         }
+        else if ($conn->query($sqlCreateTableImg) == TRUE) {            
+            // Add the team image locations to the img table
+            $sqlImg1 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('justiceLeagueTeam-img.jpg', 'img', 'dc')";
+            $sqlImg2 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('avengersTeam-img.webp', 'img', 'ma')";
+            $sqlImg3 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('otherTeam-img.jpg', 'img', 'ot')";
+
+            // Run the queries for the img table
+            if($conn->query($sqlImg1) == FALSE) {
+                echo("Failed to add to table" . $conn->error);
+            }
+            if($conn->query($sqlImg2) == FALSE) {
+                echo("Failed to add to table" . $conn->error);
+            }
+            if($conn->query($sqlImg3) == FALSE) {
+                echo("Failed to add to table" . $conn->error);
+            }
+        }
+        
         if($conn->query($sqlCreateTableUni) == FALSE) {
             echo("Creating Universe table FAILED" . $conn->error);
         }
+        else if ($conn->query($sqlCreateTableUni) == TRUE) {
+            // Add the universes to the uni table
+            $sqlUni1 = "INSERT IGNORE INTO uni VALUES ('dc', 'DC Universe', 'Justice League')";
+            $sqlUni2 = "INSERT IGNORE INTO uni VALUES ('ma', 'Marvel Universe', 'Avengers')";
+            $sqlUni3 = "INSERT IGNORE INTO uni VALUES ('ot', 'Other', 'Flying Solo')";
 
-        // Add the universes to the uni table
-        $sqlUni1 = "INSERT INTO uni VALUES ('dc', 'DC Universe')";
-        $sqlUni2 = "INSERT INTO uni VALUES ('ma', 'Marvel Universe')";
-        $sqlUni3 = "INSERT INTO uni VALUES ('ot', 'Other')";
-
-        if($conn->query($sqlUni1) == FALSE) {
-            echo("Added to table" . $conn->error);
-        }
-        if($conn->query($sqlUni2) == FALSE) {
-            echo("Added to table" . $conn->error);
-        }
-        if($conn->query($sqlUni3) == FALSE) {
-            echo("Added to table" . $conn->error);
-        }
-
-        // Add the main team pics to the image table
-        $sqlImg1 = "INSERT INTO img (imgLoc) VALUES ('avengers-img.jpg')";
-        $sqlImg2 = "INSERT INTO img (imgLoc) VALUES ('dc-img.jpg')";
-        $sqlImg3 = "INSERT INTO img (imgLoc) VALUES ('other-img.jpg')";
-        
-        if($conn->query($sqlImg1) == FALSE) {
-            echo("Added to table" . $conn->error);
-        }
-        if($conn->query($sqlImg2) == FALSE) {
-            echo("Added to table" . $conn->error);
-        }
-        if($conn->query($sqlImg3) == FALSE) {
-            echo("Added to table" . $conn->error);
+            // Run the queries for the uni table
+            if($conn->query($sqlUni1) == FALSE) {
+                echo("Failed to add to table" . $conn->error);
+            }
+            if($conn->query($sqlUni2) == FALSE) {
+                echo("Failed to add to table" . $conn->error);
+            }
+            if($conn->query($sqlUni3) == FALSE) {
+                echo("Failed to add to table" . $conn->error);
+            }
         }
     }
-    function addingStats() {
+
+    function addingStats($conn) {
         $heroName = processInput($_POST["heroName"]);
-        $heroGroups = processInput($_POST["heroGroups"]);
-        $heroImg = processInput($_POST["heroImg"]);
-        $heroLogo = processInput($_POST["heroLogo"]);
         $heroPwr = processInput($_POST["heroPwr"]);
         $heroAb = processInput($_POST["heroAb"]);
         $heroWeak = processInput($_POST["heroWeak"]);
         $heroEn = processInput($_POST["heroEn"]);
-        $heroBio = processInput($_POST["heroBio"]);
+        $heroBio = mysqli_real_escape_string($conn, processInput($_POST["heroBio"]));
         $heroUni = processInput($_POST["heroUni"]); 
+        $heroImg = processInput($_POST["heroImg"]);
+        $heroLogo = processInput($_POST["heroLogo"]);
         echo ($heroName . "<br>");
-        echo ($heroGroups . "<br>");
-        echo ($heroImg . "<br>");
-        echo ($heroLogo . "<br>");
         echo ($heroPwr . "<br>");
         echo ($heroAb . "<br>");
         echo ($heroWeak . "<br>");
         echo ($heroEn . "<br>");
         echo ($heroBio . "<br>");
         echo ($heroUni . "<br>");
+        echo ($heroImg . "<br>");
+        echo ($heroLogo . "<br>");
 
+        $sqlHero = "INSERT INTO hero (heroName, heroPwr, heroAb, heroWeak, heroEn, heroBio, uniID, imgLoc, logoLoc) VALUES ('$heroName', '$heroPwr', '$heroAb', '$heroWeak', '$heroEn', '$heroBio', '$heroUni', '$heroImg', '$heroLogo')";
+        if($conn->query($sqlHero) == FALSE) {
+            echo("Failed to add entry to hero table ". $conn->error);
+        }
     }
 ?>
