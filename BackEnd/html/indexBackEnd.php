@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Superhero SQL Project</title>
+    <title>Superhero SQL Project BackEnd</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="../css/stylesBackEnd.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -17,20 +17,16 @@
                 <h1><u>Adding Superheroes</u></h1>
             </div>
             <div class="col-12 text-center">
-                <img src="../imgs/1superhero-img.jpg" alt="Generic Image of a Superhero" class="rounded mx-auto d-block">
+                <img src="../../imgs/1superhero-img.jpg" alt="Generic Image of a Superhero" class="rounded mx-auto d-block">
             </div>
         </header>
 
         <main>
             <form name="addHero" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <article class="row justify-content-center">
-                    <div class="col-12 col-sm-6 my-1">
+                    <div class="col-12 my-1">
                         <label for="heroName">Hero Name: </label>
                        <input type="text" name="heroName" id="heroName" placeholder="Enter Hero Name..." class="w-100">
-                    </div>
-                    <div class="col-12 col-sm-6 my-1">
-                        <label for="heroGroups">Hero Groups: </label>
-                        <input type="text" name="heroGroups" id="heroGroups" placeholder="Enter Hero Groups..." class="w-100">
                     </div>
                     <div class="col-12 col-sm-6 my-1">
                         <label for="heroImg">Select Hero Image Location: </label>
@@ -99,7 +95,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../js/scripts.js"></script>
+    <!-- <script src="../js/scripts.js"></script> -->
 </body>
 </html>
 
@@ -123,7 +119,7 @@
             $dbSel = mysqli_select_db( $con, 'Superhero');
         if(!$dbSel) {
                 die("Database wasn't created");
-                header("Refresh:0");
+                // header("Refresh:0");
             }
         else {
             echo("db selected");
@@ -177,44 +173,41 @@
 
         if($conn->query($sqlCreateTableImg) == FALSE) {
             echo("Creating Image table FAILED" . $conn->error);
-        }
-        else if ($conn->query($sqlCreateTableImg) == TRUE) {            
-            // Add the team image locations to the img table
-            $sqlImg1 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('justiceLeagueTeam-img.jpg', 'img', 'dc')";
-            $sqlImg2 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('avengersTeam-img.webp', 'img', 'ma')";
-            $sqlImg3 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('otherTeam-img.jpg', 'img', 'ot')";
-
-            // Run the queries for the img table
-            if($conn->query($sqlImg1) == FALSE) {
-                echo("Failed to add to table" . $conn->error);
-            }
-            if($conn->query($sqlImg2) == FALSE) {
-                echo("Failed to add to table" . $conn->error);
-            }
-            if($conn->query($sqlImg3) == FALSE) {
-                echo("Failed to add to table" . $conn->error);
-            }
-        }
-        
+        }           
+                
         if($conn->query($sqlCreateTableUni) == FALSE) {
             echo("Creating Universe table FAILED" . $conn->error);
         }
-        else if ($conn->query($sqlCreateTableUni) == TRUE) {
-            // Add the universes to the uni table
-            $sqlUni1 = "INSERT IGNORE INTO uni VALUES ('dc', 'DC Universe', 'Justice League')";
-            $sqlUni2 = "INSERT IGNORE INTO uni VALUES ('ma', 'Marvel Universe', 'Avengers')";
-            $sqlUni3 = "INSERT IGNORE INTO uni VALUES ('ot', 'Other', 'Flying Solo')";
 
-            // Run the queries for the uni table
-            if($conn->query($sqlUni1) == FALSE) {
-                echo("Failed to add to table" . $conn->error);
-            }
-            if($conn->query($sqlUni2) == FALSE) {
-                echo("Failed to add to table" . $conn->error);
-            }
-            if($conn->query($sqlUni3) == FALSE) {
-                echo("Failed to add to table" . $conn->error);
-            }
+        // Add the universes to the uni table
+        $sqlUni1 = "INSERT IGNORE INTO uni VALUES ('dc', 'DC Universe', 'Justice League')";
+        $sqlUni2 = "INSERT IGNORE INTO uni VALUES ('ma', 'Marvel Universe', 'Avengers')";
+        $sqlUni3 = "INSERT IGNORE INTO uni VALUES ('ot', 'Other', 'Flying Solo')";
+
+        // Run the queries for the uni table
+        if($conn->query($sqlUni1) == FALSE) {
+            echo("Failed to add to table" . $conn->error);
+        }
+        if($conn->query($sqlUni2) == FALSE) {
+            echo("Failed to add to table" . $conn->error);
+        }
+        if($conn->query($sqlUni3) == FALSE) {
+            echo("Failed to add to table" . $conn->error);
+        }
+        // Add the team image locations to the img table
+        $sqlImg1 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('justiceLeagueTeam-img.jpg', 'imgs', 'dc')";
+        $sqlImg2 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('avengersTeam-img.webp', 'imgs', 'ma')";
+        $sqlImg3 = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('otherTeam-img.jpg', 'imgs', 'ot')";
+
+        // Run the queries for the img table
+        if($conn->query($sqlImg1) == FALSE) {
+            echo("Failed to add to table" . $conn->error);
+        }
+        if($conn->query($sqlImg2) == FALSE) {
+            echo("Failed to add to table" . $conn->error);
+        }
+        if($conn->query($sqlImg3) == FALSE) {
+            echo("Failed to add to table" . $conn->error);
         }
     }
 
@@ -228,19 +221,27 @@
         $heroUni = processInput($_POST["heroUni"]); 
         $heroImg = processInput($_POST["heroImg"]);
         $heroLogo = processInput($_POST["heroLogo"]);
-        echo ($heroName . "<br>");
-        echo ($heroPwr . "<br>");
-        echo ($heroAb . "<br>");
-        echo ($heroWeak . "<br>");
-        echo ($heroEn . "<br>");
-        echo ($heroBio . "<br>");
-        echo ($heroUni . "<br>");
-        echo ($heroImg . "<br>");
-        echo ($heroLogo . "<br>");
+        // echo ($heroName . "<br>");
+        // echo ($heroPwr . "<br>");
+        // echo ($heroAb . "<br>");
+        // echo ($heroWeak . "<br>");
+        // echo ($heroEn . "<br>");
+        // echo ($heroBio . "<br>");
+        // echo ($heroUni . "<br>");
+        // echo ($heroImg . "<br>");
+        // echo ($heroLogo . "<br>");
 
-        $sqlHero = "INSERT INTO hero (heroName, heroPwr, heroAb, heroWeak, heroEn, heroBio, uniID, imgLoc, logoLoc) VALUES ('$heroName', '$heroPwr', '$heroAb', '$heroWeak', '$heroEn', '$heroBio', '$heroUni', '$heroImg', '$heroLogo')";
+        $sqlHero = "INSERT IGNORE INTO hero (heroName, heroPwr, heroAb, heroWeak, heroEn, heroBio, uniID, imgLoc, logoLoc) VALUES ('$heroName', '$heroPwr', '$heroAb', '$heroWeak', '$heroEn', '$heroBio', '$heroUni', '$heroImg', '$heroLogo')";
+        $sqlImg = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('$heroImg', 'imgs', '$heroUni')";
+        $sqlLogo = "INSERT IGNORE INTO img (imgLoc, imgDesc, uniID) VALUES ('$heroLogo', 'logos', '$heroUni')";
         if($conn->query($sqlHero) == FALSE) {
             echo("Failed to add entry to hero table ". $conn->error);
+        }
+        if($conn->query($sqlImg) == FALSE) {
+            echo("Failed to add image to img table ". $conn->error);
+        }
+        if($conn->query($sqlLogo) == FALSE) {
+            echo("Failed to add logo to img table ". $conn->error);
         }
     }
 ?>
