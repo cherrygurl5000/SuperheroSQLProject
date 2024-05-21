@@ -1,3 +1,87 @@
 body {
-  background-color: red;
+  background: #BABABA linear-gradient(white, #BABABA);
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+}
+
+.topNav {
+  display: none;
+  background-color: lightblue;
+  top: 40px;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+.topNav a {
+  text-decoration: none;
+  color: #000;
+  cursor: grab;
+  width: 100%;
+}
+.topNav li {
+  list-style-type: none;
+  padding-right: 20px;
+  padding-bottom: 10px;
+}
+
+a figure img {
+  border-radius: 30px;
+}
+
+.allSection {
+  padding-top: 15px;
+  background: #BABABA linear-gradient(white, #BABABA, #0775B2 85%);
+}
+
+#noLeftBorder {
+  border-left: none !important;
+  background: #BABABA radial-gradient(#3D342F, #0C0805);
+}
+
+#noRightBorder {
+  border-right: none !important;
+  background: #BABABA linear-gradient(#68CEF6, #030200, #EB1E25);
+}
+
+.labelHeading {
+  min-width: 120px;
+  min-height: 120px;
+  text-align: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+}
+
+.allLH {
+  background-image: url("../imgs/heroesLabel.png");
+  top: 80px;
+  left: 28px;
+}
+
+.dcLH {
+  background-image: url("../imgs/dcLabel.png");
+  top: 115px;
+  left: 24px;
+}
+
+.marvelLH {
+  background-image: url("../imgs/marvelLabel.png");
+  top: 115px;
+  left: 20px;
+}
+
+footer nav ul {
+  padding: 0;
+  margin: 0;
+}
+footer nav ul li {
+  list-style-type: none;
+}
+footer nav ul li a {
+  text-decoration: none;
+  color: black;
 }/*# sourceMappingURL=styles.css.map */
