@@ -11,12 +11,12 @@
     <link href="../css/styles.css" rel="stylesheet" type="text/css" />
 
 </head>
-<body class="container">
+<body class="container-md">
 
-    <header class="row justify-content-center mt-3">
-        <nav class="col-3 mr-3 align-self-center position-relative">
+    <header class="row justify-content-center mt-5 mb-md-4 d-md-flex">
+        <nav class="col-3 col-md-12 mr-3 align-self-center position-relative order-md-2 mb-md-3">
             <a href="#" class="btn btn-info mr-3" role="button" id="menuIcon"><i class="fa fa-bars"></i></a>
-            <ul class="topNav position-absolute text-start">
+            <ul class="topNav text-start d-md-flex justify-content-md-around">
                 <li><a href="#">Explore</a></li>
                 <li><a href="#">Heroes</a></li>
                 <li><a href="#">Random</a></li>
@@ -24,24 +24,24 @@
                 <li><a href="#">Marvel</a></li>
             </ul>
         </nav>
-        <a href="#" class="col-4 btn" role="button">
+        <a href="#" class="col-4 col-md-1 btn order-md-1" role="button">
             <figure class="w-100">
                 <img src="../imgs/2superheroBg-img.jpg" alt="Generic Superhero Background Image" title="Generic Superhero Background Image">
             </figure>
         </a>
-        <div class="col-3"></div>
+        <div class="col-3 col-md-0 order-md-3"></div>
         
     </header>
-    <main class="row justify-content-center">
-        <section class="row justify-content-center allSection">
+    <main class="row justify-content-center mt-2 d-md-flex">
+        <section class="row justify-content-center pb-4 order-md-2 allSection" id="allSect">
             <a href="#" class="row justify-content-center">
                 <figure class="w-50 position-relative">
-                    <img src="../imgs/1superhero-img.jpg" alt="All Heroes Image" title="All Heroes Image">
+                    <img src="../imgs/1superhero-img.jpg" alt="All Heroes Image" title="All Heroes Image" id="allHeroesImg">
                     <span class="allLH labelHeading"></span>
                 </figure>
             </a>
         </section>
-        <section class="col-6 pt-3 pb-5 border border-dark" id="noLeftBorder">
+        <section class="col-6 col-md-4 pt-3 border border-dark order-md-1" id="noLeftBorder">
             <a href="#">
                 <figure class="w-100 pt-5 position-relative">
                     <img src="../imgs/dc-img.jpg" alt="DC Universe Image" title="DC Universe Image" id="dcImg">
@@ -49,7 +49,7 @@
                 </figure>
             </a>
         </section>
-        <section class="col-6 pt-3 pb-5 border border-dark" id="noRightBorder">
+        <section class="col-6 col-md-4 pt-3 border border-dark order-md-2" id="noRightBorder">
             <a href="#">
                 <figure class="w-100 pt-5 position-relative">
                     <img src="../imgs/marvel-img.jpeg" alt="Marvel Universe Image" title="Marvel Universe Image" id="marvelImg">
@@ -59,9 +59,9 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="mt-md-4">
         <nav>
-            <ul class="row justify-content-around mt-3">
+            <ul class="row justify-content-around my-3">
                 <li class="col text-center"><a href="#">Explore</a></li>
                 <li class="col text-center"><a href="#">Heroes</a></li>
                 <li class="col text-center"><a href="#">Random</a></li>
@@ -73,6 +73,7 @@
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../js/scripts.js"></script>
 </body>

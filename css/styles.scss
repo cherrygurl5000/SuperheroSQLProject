@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Jaro:ital,wght@0,400;0,700;1,400&display=swap");
+
 // $red: red;
 $blue: #0775B2;
 $lightBrown: #3D342F;
@@ -20,10 +22,12 @@ img {
     top: 40px;
     border-radius: 5px;
     padding-top: 10px;
+    z-index: 10;
+    position: absolute;
 
     a {
         text-decoration: none;
-        color: #000;
+        color: ivory;
         cursor: grab;
         width: 100%;
     }
@@ -31,27 +35,34 @@ img {
         list-style-type: none;
         padding-right: 20px;
         padding-bottom: 10px;
+        text-shadow: 2px 2px 2px darkblue;
+        font-family: 'Jaro', sans-serif;
     }
 }
 a figure img {
     border-radius: 30px;
 }
 .allSection {
-    padding-top: 15px;
+    padding-top: 35px;
+    padding-bottom: 20px;
     background: $defaultBg linear-gradient(white, $defaultBg, $blue 85%);
+    border-top: solid 1px black;
 }
 
 #noLeftBorder {
     border-left: none !important;
     background: $defaultBg radial-gradient($lightBrown, $darkBrown);
+    padding-bottom: 4rem;
 }
 #noRightBorder {
     border-right: none !important;
     background: $defaultBg linear-gradient($lightBlue, $blackish, $red);
+    padding-bottom: 4rem;
 }
 .labelHeading {
     min-width: 120px;
     min-height: 120px;
+    width: 100%;
     text-align: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -60,18 +71,12 @@ a figure img {
 }
 .allLH {
     background-image: url('../imgs/heroesLabel.png');
-    top: 80px;
-    left: 28px;
 }
 .dcLH {
     background-image: url('../imgs/dcLabel.png');
-    top: 115px;
-    left: 24px;
 }
 .marvelLH {
     background-image: url('../imgs/marvelLabel.png');
-    top: 115px;
-    left: 20px;
 }
 
 footer nav ul {
@@ -82,6 +87,27 @@ footer nav ul {
         a {
         text-decoration: none;
         color: black;
+        text-shadow: 2px 2px 2px lightskyblue;        
+        font-family: 'Jaro', sans-serif;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #menuIcon {
+        display: none;
+    }
+    .topNav {
+        display: block;
+        position: relative;
+        width: 100%;
+        background-color: transparent;
+        li {
+            display: inline-flex;
+            a {                
+                color: black;
+                text-shadow: 2px 2px 2px lightskyblue;   
+            }
         }
     }
 }
