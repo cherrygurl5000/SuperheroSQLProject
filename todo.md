@@ -14,5 +14,6 @@ X-   Best solution would involve scraping the page and automating the entire pro
 -   Initially, just show all heroes with no sorting
 -When clicked, show the superhero page
 -   Maybe have random superheroes for a similar at the bottom
--Menu should have All Heroes, Universes
++-Menu should have All Heroes, Universes
++-Home page shows link for all heroes, DC universe, and Marvel universe
 ```
