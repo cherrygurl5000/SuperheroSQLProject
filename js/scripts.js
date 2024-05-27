@@ -30,52 +30,11 @@ $(document).ready(function () {
     setTimeout(labelPlacement, 500);
 });
 
-// function for expanding the correctly hovered box and shrinking the other boxes
-function hovering() {
-    let hovered = "#" + $(this).attr('id');
-    let allElem = ['#noLeftBorder', '#noRightBorder', '#allSect'];
-    let notHovered = allElem.filter(i => i != hovered);
-
-    $('.labelHeading').css('visibility', 'hidden');
-
-    $(notHovered[0]).switchClass('col-md-4', 'col-md-3');
-    $(notHovered[1]).switchClass('col-md-4', 'col-md-3');
-    $(hovered).switchClass('col-md-4', 'col-md-6');
-
-};
-
-// function to reset the univerese classes to equal
-function noHover() {
-    let hovered = "#" + $(this).attr('id');
-    let allElem = ['#noLeftBorder', '#noRightBorder', '#allSect'];
-    let notHovered = allElem.filter(i => i != hovered);
-
-    $(hovered).removeClass('col-md-6');
-    $(hovered).addClass('col-md-4');
-
-    $(notHovered[0]).removeClass('col-md-3');
-    $(notHovered[0]).addClass('col-md-4');
-
-    $(notHovered[1]).removeClass('col-md-3');
-    $(notHovered[1]).addClass('col-md-4');
-
-    $('.labelHeading').css('visibility', 'visible');
-}
-
 // Only do the following if on a medium or larger screen
 if ($(window).width() >= 768) {
     $('.allSection').removeClass('row');
     $('.allSection').addClass('col-md-4');
     $('.allSection a figure').removeClass('w-50');
     $('.allSection a figure').addClass('w-75');
-    
-    // Expand the universes when the universe is hovered over
-    $('#noLeftBorder').mouseover(hovering);
-    $('#noRightBorder').mouseover(hovering);
-    $('#allSect').mouseover(hovering);
-
-    $('#noLeftBorder').mouseleave(noHover);
-    $('#noRightBorder').mouseleave(noHover);
-    $('#allSect').mouseleave(noHover);
 }
 
