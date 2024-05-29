@@ -14,6 +14,7 @@ $blackish: #030200;
 $red: #EB1E25;
 $defaultBg: #BABABA;
 $infoBg: #BABABABB;
+
 body {
     //background: $defaultBg linear-gradient(white, $defaultBg);
     height: 100vh;
@@ -93,10 +94,6 @@ a figure img {
     font-family: $headerHeroes;
     text-shadow: 2px 2px 2px lightskyblue;
 }
-.heroHeading {
-    background-color: $infoBg;
-    padding: 10px;
-}
 .heroLinks {
     text-decoration: none;
 }
@@ -121,6 +118,9 @@ a figure img {
     border-radius: 10px;
     border: 2px inset black;
 }
+#heroId {
+    max-height: 400px;
+}
 .infoTitles {
     background-color: $infoBg;
     padding-bottom: 5px;
@@ -131,20 +131,21 @@ a figure img {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     font-family: $dcHeroes;
-
+    text-align: center;
 }
 .infoText {
-    height: 265px;
+    min-height: 265px;
+    max-height: 400px;
     background-color: $infoBg;
     color: black;
-    padding: 2px 8px;
+    padding: 2px 8px 8px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     font-family: $marvelHeroes;
 }
 .skillsText {
     height: 100px;
-    padding: 0px 5px 0px 20px;
+    padding: 0px 5px 0px 30px;
 }
 .bgColors {
     background-color: $infoBg;
@@ -184,5 +185,12 @@ footer nav ul {
                 text-shadow: 2px 2px 2px lightskyblue;   
             }
         }
+    }
+    .heroHeading {
+        background-color: $infoBg;
+        padding: 10px;
+    }
+    .tbBorders {
+        border: none;
     }
 }

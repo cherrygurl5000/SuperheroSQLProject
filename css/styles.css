@@ -88,11 +88,6 @@ a figure img {
   text-shadow: 2px 2px 2px lightskyblue;
 }
 
-.heroHeading {
-  background-color: rgba(186, 186, 186, 0.7333333333);
-  padding: 10px;
-}
-
 .heroLinks {
   text-decoration: none;
 }
@@ -122,6 +117,10 @@ a figure img {
   border: 2px inset black;
 }
 
+#heroId {
+  max-height: 400px;
+}
+
 .infoTitles {
   background-color: rgba(186, 186, 186, 0.7333333333);
   padding-bottom: 5px;
@@ -132,13 +131,15 @@ a figure img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   font-family: "Jaro", sans-serif;
+  text-align: center;
 }
 
 .infoText {
-  height: 265px;
+  min-height: 265px;
+  max-height: 400px;
   background-color: rgba(186, 186, 186, 0.7333333333);
   color: black;
-  padding: 2px 8px;
+  padding: 2px 8px 8px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   font-family: "Platypi", serif;
@@ -146,7 +147,7 @@ a figure img {
 
 .skillsText {
   height: 100px;
-  padding: 0px 5px 0px 20px;
+  padding: 0px 5px 0px 30px;
 }
 
 .bgColors {
@@ -189,5 +190,12 @@ footer nav ul li a {
   .topNav li a {
     color: black;
     text-shadow: 2px 2px 2px lightskyblue;
+  }
+  .heroHeading {
+    background-color: rgba(186, 186, 186, 0.7333333333);
+    padding: 10px;
+  }
+  .tbBorders {
+    border: none;
   }
 }/*# sourceMappingURL=styles.css.map */
