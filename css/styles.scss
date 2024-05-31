@@ -30,6 +30,7 @@ img {
     top: 40px;
     border-radius: 5px;
     padding-top: 10px;
+    padding-right: 10px;
     z-index: 10;
     position: absolute;
 
@@ -120,6 +121,14 @@ a figure img {
 }
 #heroId {
     max-height: 400px;
+   // max-width: 210px;
+}
+.heroHeading {
+    background-color: $infoBg;
+    padding: 10px;
+}
+#bioText {
+    max-height: 345px;
 }
 .infoTitles {
     background-color: $infoBg;
@@ -177,7 +186,9 @@ footer nav ul {
         display: block;
         position: relative;
         width: 100%;
-        background-color: transparent;
+        background-color: $infoBg;
+        padding-top: 20px;
+        padding-bottom: 20px;
         li {
             display: inline-flex;
             a {                
@@ -185,10 +196,6 @@ footer nav ul {
                 text-shadow: 2px 2px 2px lightskyblue;   
             }
         }
-    }
-    .heroHeading {
-        background-color: $infoBg;
-        padding: 10px;
     }
     .tbBorders {
         border: none;

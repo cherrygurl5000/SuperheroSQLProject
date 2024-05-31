@@ -15,6 +15,7 @@ img {
   top: 40px;
   border-radius: 5px;
   padding-top: 10px;
+  padding-right: 10px;
   z-index: 10;
   position: absolute;
 }
@@ -121,6 +122,15 @@ a figure img {
   max-height: 400px;
 }
 
+.heroHeading {
+  background-color: rgba(186, 186, 186, 0.7333333333);
+  padding: 10px;
+}
+
+#bioText {
+  max-height: 345px;
+}
+
 .infoTitles {
   background-color: rgba(186, 186, 186, 0.7333333333);
   padding-bottom: 5px;
@@ -182,7 +192,9 @@ footer nav ul li a {
     display: block;
     position: relative;
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(186, 186, 186, 0.7333333333);
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   .topNav li {
     display: inline-flex;
@@ -190,10 +202,6 @@ footer nav ul li a {
   .topNav li a {
     color: black;
     text-shadow: 2px 2px 2px lightskyblue;
-  }
-  .heroHeading {
-    background-color: rgba(186, 186, 186, 0.7333333333);
-    padding: 10px;
   }
   .tbBorders {
     border: none;
