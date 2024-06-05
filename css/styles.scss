@@ -16,9 +16,13 @@ $defaultBg: #BABABA;
 $infoBg: #BABABABB;
 
 body {
-    //background: $defaultBg linear-gradient(white, $defaultBg);
+    background: $defaultBg linear-gradient(white, $defaultBg) fixed;
     height: 100vh;
     overflow-x: hidden;
+
+    
+}
+.heroPg {
     background: $defaultBg url('../logos/aquaman-logo.jpg') repeat fixed center;
 }
 img {
@@ -121,7 +125,6 @@ a figure img {
 }
 #heroId {
     max-height: 400px;
-   // max-width: 210px;
 }
 .heroHeading {
     background-color: $infoBg;
@@ -129,6 +132,17 @@ a figure img {
 }
 #bioText {
     max-height: 345px;
+}
+#logoImg {
+    height: auto; 
+    width: 150px; 
+    float: left; 
+    margin-right: 10px;
+
+    img {
+        width: 100%; 
+        height: 100%; 
+    }
 }
 .infoTitles {
     background-color: $infoBg;

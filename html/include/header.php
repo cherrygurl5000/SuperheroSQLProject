@@ -2,14 +2,14 @@
     <nav class="col-3 col-md-12 mr-3 align-self-center position-relative order-md-2 mb-md-3">
         <a href="#" class="btn btn-info mr-3" role="button" id="menuIcon"><i class="fa fa-bars"></i></a>
         <ul class="topNav text-start d-md-flex justify-content-md-around">
-            <li><a href="#">Explore</a></li>
-            <li><a href="./allHeroes.php">Heroes</a></li>
-            <li><a href="#">Random</a></li>
-            <li><a href="#">DC</a></li>
-            <li><a href="#">Marvel</a></li>
+            <li><a href="<?php echo HOMEPAGE; ?>">Explore</a></li>
+            <li><a href="<?php echo ALLHEROES; ?>">Heroes</a></li>
+            <li><a href="<?php echo $randHero; ?>">Random</a></li>
+            <li><a href="<?php echo ALLDC; ?>">DC</a></li>
+            <li><a href="<?php echo ALLMARVEL; ?>">Marvel</a></li>
         </ul>
     </nav>
-    <a href="#" class="col-4 col-md-1 btn order-md-1" role="button">
+    <a href="<?php echo HOMEPAGE; ?>" class="col-4 col-md-1 btn order-md-1" role="button">
         <figure class="w-100">
             <img src="../imgs/2superheroBg-img.jpg" alt="Generic Superhero Background Image" title="Generic Superhero Background Image">
         </figure>

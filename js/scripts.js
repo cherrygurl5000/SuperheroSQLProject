@@ -38,11 +38,3 @@ if ($(window).width() >= 768) {
     $('.allSection a figure').addClass('w-75');
 }
 
-// Add logo image to header section
-$('#logoImg').append(`
-    <figure class="w-100">
-        <img src="../logos/aquaman-logo.jpg" alt="Aquaman Logo" class="heroImg">
-    </figure>
-    `);
-$('#logoImg').removeClass('col-md-0');
-$('#logoImg').addClass('col-md-2 align-self-center ml-4 mt-md-4');

@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Jaro&family=Jersey+10&family=Danfo&family=Platypi&display=swap");
 body {
+  background: #BABABA linear-gradient(white, #BABABA) fixed;
   height: 100vh;
   overflow-x: hidden;
+}
+
+.heroPg {
   background: #BABABA url("../logos/aquaman-logo.jpg") repeat fixed center;
 }
 
@@ -129,6 +133,17 @@ a figure img {
 
 #bioText {
   max-height: 345px;
+}
+
+#logoImg {
+  height: auto;
+  width: 150px;
+  float: left;
+  margin-right: 10px;
+}
+#logoImg img {
+  width: 100%;
+  height: 100%;
 }
 
 .infoTitles {
