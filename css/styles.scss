@@ -120,6 +120,7 @@ a figure img {
     border-bottom: 1px black solid;
 }
 .heroImg {
+    background-color: $infoBg;
     border-radius: 10px;
     border: 2px inset black;
 }
@@ -129,6 +130,7 @@ a figure img {
 .heroHeading {
     background-color: $infoBg;
     padding: 10px;
+    border-radius: 5px;
 }
 #bioText {
     max-height: 345px;
@@ -165,6 +167,10 @@ a figure img {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     font-family: $marvelHeroes;
+
+    li {
+        font-size: large;
+    }
 }
 .skillsText {
     height: 100px;
